@@ -61,8 +61,8 @@ namespace Demo.BLL
                 using (var context = serviceScope.ServiceProvider.GetService<DemoDbContext>())
                 {
                     // Add default roles
-                    var adminRole = new Role { Name = CustomRoles.Admin };
-                    var userRole = new Role { Name = CustomRoles.User };
+                    var adminRole = new Role { Name = CustomRoles.Admin.ConvertToString() };
+                    var userRole = new Role { Name = CustomRoles.User.ConvertToString() };
                     if (!context.Roles.Any())
                     {
                         context.Add(adminRole);

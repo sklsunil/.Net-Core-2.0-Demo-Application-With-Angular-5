@@ -20,6 +20,15 @@ namespace Demo.API
             // Add as many of these lines as you need to map your objects
             CreateMap<Book, BookModel>();
             CreateMap<BookModel, Book>();
+            CreateMap<AppUser, User>()
+                .ForMember(
+                dest => dest.IsActive,
+                opt => opt.MapFrom(x => true))
+                .ForMember(
+                dest => dest.SerialNumber,
+                opt => opt.MapFrom(x => Guid.NewGuid().ToString("N")));
+            CreateMap<User, AppUser>();
+
         }
     }
 }

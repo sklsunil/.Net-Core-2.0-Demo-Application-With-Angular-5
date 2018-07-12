@@ -38,3 +38,17 @@ C:\Users\sluna\OneDrive\Documents\.Net-Core-2.0-Demo-Application-With-Angular-5\
 C:\Users\sluna\OneDrive\Documents\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DAL\obj\Debug\netcoreapp2.0\Demo.DAL.csproj.CopyComplete
 C:\Users\sluna\OneDrive\Documents\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DAL\obj\Debug\netcoreapp2.0\Demo.DAL.dll
 C:\Users\sluna\OneDrive\Documents\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DAL\obj\Debug\netcoreapp2.0\Demo.DAL.pdb
+C:\Users\sluna\OneDrive\Documents\Demo\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DAL\bin\Debug\netcoreapp2.0\Demo.DAL.deps.json
+C:\Users\sluna\OneDrive\Documents\Demo\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DAL\bin\Debug\netcoreapp2.0\Demo.DAL.runtimeconfig.json
+C:\Users\sluna\OneDrive\Documents\Demo\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DAL\bin\Debug\netcoreapp2.0\Demo.DAL.runtimeconfig.dev.json
+C:\Users\sluna\OneDrive\Documents\Demo\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DAL\bin\Debug\netcoreapp2.0\Demo.DAL.dll
+C:\Users\sluna\OneDrive\Documents\Demo\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DAL\bin\Debug\netcoreapp2.0\Demo.DAL.pdb
+C:\Users\sluna\OneDrive\Documents\Demo\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DAL\bin\Debug\netcoreapp2.0\Demo.DomainModels.dll
+C:\Users\sluna\OneDrive\Documents\Demo\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DAL\bin\Debug\netcoreapp2.0\Demo.DomainModels.pdb
+C:\Users\sluna\OneDrive\Documents\Demo\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DAL\obj\Debug\netcoreapp2.0\Demo.DAL.csprojAssemblyReference.cache
+C:\Users\sluna\OneDrive\Documents\Demo\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DAL\obj\Debug\netcoreapp2.0\Demo.DAL.csproj.CoreCompileInputs.cache
+C:\Users\sluna\OneDrive\Documents\Demo\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DAL\obj\Debug\netcoreapp2.0\Demo.DAL.AssemblyInfoInputs.cache
+C:\Users\sluna\OneDrive\Documents\Demo\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DAL\obj\Debug\netcoreapp2.0\Demo.DAL.AssemblyInfo.cs
+C:\Users\sluna\OneDrive\Documents\Demo\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DAL\obj\Debug\netcoreapp2.0\Demo.DAL.csproj.CopyComplete
+C:\Users\sluna\OneDrive\Documents\Demo\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DAL\obj\Debug\netcoreapp2.0\Demo.DAL.dll
+C:\Users\sluna\OneDrive\Documents\Demo\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DAL\obj\Debug\netcoreapp2.0\Demo.DAL.pdb

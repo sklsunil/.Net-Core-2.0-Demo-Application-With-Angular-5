@@ -30,6 +30,13 @@ using Demo.BLL.IService;
 using Demo.DomainModels;
 using Demo.DomainModels.ApiResponse;
 using Newtonsoft.Json.Serialization;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel;
+using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption;
+using Microsoft.AspNetCore.Antiforgery;
+using Demo.API.Filters;
+using Demo.DomainModels.Extensions;
 
 namespace Demo.API
 {
@@ -92,6 +99,7 @@ namespace Demo.API
             services.AddMvc(opt =>
             {
                 opt.Filters.Add(typeof(ValidatorActionFilter));
+                opt.Filters.Add(typeof(CustomExceptionFilter));
             });
 
             //Swagger Configuration and Add Swagger generation Document
@@ -111,12 +119,12 @@ namespace Demo.API
 
             services.AddMvcCore(options =>
             {
-                options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+                //options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
             }).AddAuthorization(options =>
             {
-                options.AddPolicy(CustomRoles.Admin, policy => policy.RequireRole(CustomRoles.Admin));
-                options.AddPolicy(CustomRoles.User, policy => policy.RequireRole(CustomRoles.User));
-                options.AddPolicy(CustomRoles.Editor, policy => policy.RequireRole(CustomRoles.Editor));
+                options.AddPolicy(CustomRoles.Admin.ConvertToString(), policy => policy.RequireRole(CustomRoles.Admin.ConvertToString()));
+                options.AddPolicy(CustomRoles.User.ConvertToString(), policy => policy.RequireRole(CustomRoles.User.ConvertToString()));
+                options.AddPolicy(CustomRoles.Editor.ConvertToString(), policy => policy.RequireRole(CustomRoles.Editor.ConvertToString()));
             });
             //.AddJsonFormatters(options => options.ContractResolver = new CamelCasePropertyNamesContractResolver()); ;
 
@@ -127,6 +135,7 @@ namespace Demo.API
                     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                     options.DefaultSignInScheme = JwtBearerDefaults.AuthenticationScheme;
                     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 })
                 .AddJwtBearer(cfg =>
                 {
@@ -169,6 +178,14 @@ namespace Demo.API
                     };
                 });
 
+            services.AddDataProtection()
+                   .UseCryptographicAlgorithms(
+                   new AuthenticatedEncryptorConfiguration()
+                   {
+                       EncryptionAlgorithm = EncryptionAlgorithm.AES_256_CBC,
+                       ValidationAlgorithm = ValidationAlgorithm.HMACSHA256
+                   })
+                   .SetDefaultKeyLifetime(TimeSpan.FromDays(7));
 
             services.AddCors(options =>
             {
@@ -180,7 +197,11 @@ namespace Demo.API
                         .AllowCredentials());
             });
 
-            services.AddAntiforgery(x => x.HeaderName = "X-XSRF-TOKEN");
+            //services.AddAntiforgery(x =>
+            //{
+            //    x.HeaderName = "X-XSRF-TOKEN";
+            //    x.SuppressXFrameOptionsHeader = false;
+            //});
 
 
             // Config IOC
@@ -193,13 +214,14 @@ namespace Demo.API
         /// <param name="app"></param>
         /// <param name="env"></param>
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(
+            IApplicationBuilder app,
+            IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseCors("CorsPolicy");
 
             app.UseStaticFiles();
@@ -214,6 +236,8 @@ namespace Demo.API
               });
 
             app.UseMvc();
+
+
 
             app.UseExceptionHandler(appBuilder =>
             {

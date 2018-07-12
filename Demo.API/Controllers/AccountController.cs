@@ -18,6 +18,9 @@ using Newtonsoft.Json.Linq;
 
 namespace Demo.API.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [Route("api/[controller]")]
     [EnableCors("CorsPolicy")]
     public class AccountController : Controller
@@ -27,6 +30,13 @@ namespace Demo.API.Controllers
         private readonly IUnitOfWork _uow;
         private readonly IAntiForgeryCookieService _antiforgery;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="usersService"></param>
+        /// <param name="tokenStoreService"></param>
+        /// <param name="uow"></param>
+        /// <param name="antiforgery"></param>
         public AccountController(
             IUsersService usersService,
             ITokenStoreService tokenStoreService,
@@ -46,57 +56,103 @@ namespace Demo.API.Controllers
             _antiforgery.CheckArgumentIsNull(nameof(antiforgery));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="loginUser"></param>
+        /// <returns></returns>
         [AllowAnonymous]
-        [IgnoreAntiforgeryToken]
+        //[IgnoreAntiforgeryToken]
         [HttpPost("[action]")]
         public async Task<IActionResult> Login([FromBody]  LoginUser loginUser)
         {
             if (loginUser == null)
             {
 
-                return new OkObjectResult(ApiResponse<string>.ErrorResult(message: "user is not set.", statusCode: HttpStatusCode.BadRequest));
+                return new BadRequestObjectResult(ApiResponse<string>.ErrorResult(message: "user is not set.", statusCode: HttpStatusCode.BadRequest));
             }
 
             var user = await _usersService.FindUserAsync(loginUser.Email, loginUser.Password);
             if (user == null || !user.IsActive)
             {
-                return new OkObjectResult(ApiResponse<string>.ErrorResult(message: "Invalid login and Password.", statusCode: HttpStatusCode.Unauthorized));
+                return new BadRequestObjectResult(ApiResponse<string>.ErrorResult(message: "Invalid login and Password.", statusCode: HttpStatusCode.Unauthorized));
             }
 
             var (accessToken, refreshToken, claims) = await _tokenStoreService.CreateJwtTokens(user, refreshTokenSource: null);
 
-            _antiforgery.RegenerateAntiForgeryCookies(claims);
+            //_antiforgery.RegenerateAntiForgeryCookies(claims);
 
             return new OkObjectResult(ApiResponse<object>.SuccessResult(new { access_token = accessToken, refresh_token = refreshToken }));
 
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="refresh_token"></param>
+        /// <returns></returns>
         [AllowAnonymous]
-        [HttpGet("[action]")]
+        [HttpPost("[action]")]
         public async Task<IActionResult> RefreshToken(string refresh_token)
         {
 
             if (string.IsNullOrWhiteSpace(refresh_token))
             {
-                return new OkObjectResult(ApiResponse<string>.ErrorResult(message: "refreshToken is not set.", statusCode: HttpStatusCode.BadRequest));
+                return new BadRequestObjectResult(ApiResponse<string>.ErrorResult(message: "refreshToken is not set.", statusCode: HttpStatusCode.BadRequest));
 
             }
 
             var token = await _tokenStoreService.FindTokenAsync(refresh_token);
             if (token == null)
             {
-                return new OkObjectResult(ApiResponse<string>.ErrorResult(message: "Unauthorized.", statusCode: HttpStatusCode.Unauthorized));
+                return new BadRequestObjectResult(ApiResponse<string>.ErrorResult(message: "Unauthorized.", statusCode: HttpStatusCode.Unauthorized));
             }
 
             var (accessToken, newRefreshToken, claims) = await _tokenStoreService.CreateJwtTokens(token.User, refresh_token);
 
-            _antiforgery.RegenerateAntiForgeryCookies(claims);
+            //_antiforgery.RegenerateAntiForgeryCookies(claims);
 
             return new OkObjectResult(ApiResponse<object>.SuccessResult(new { access_token = accessToken, refresh_token = newRefreshToken }));
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="appUser"></param>
+        /// <returns></returns>
+        [AllowAnonymous]
+        //[IgnoreAntiforgeryToken]
+        [HttpPost("[action]")]
+        public async Task<IActionResult> AddUser([FromBody]  AppUser appUser)
+        {
+            if (appUser == null)
+            {
+
+                return new BadRequestObjectResult(ApiResponse<string>.ErrorResult(message: "user is not set.", statusCode: HttpStatusCode.BadRequest));
+            }
+
+            var userExist = await _usersService.FindUserAsync(appUser.Email);
+            if (userExist != null)
+            {
+                return new BadRequestObjectResult(ApiResponse<string>.ErrorResult(message: "User already exist.", statusCode: HttpStatusCode.BadRequest));
+            }
+
+            User user = await _usersService.AddUser(appUser);
+
+            var (accessToken, refreshToken, claims) = await _tokenStoreService.CreateJwtTokens(user, refreshTokenSource: null);
+
+            //_antiforgery.RegenerateAntiForgeryCookies(claims);
+
+            return new OkObjectResult(ApiResponse<object>.SuccessResult(new { access_token = accessToken, refresh_token = refreshToken }));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="refreshToken"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         [HttpGet("[action]")]
         public async Task<bool> Logout(string refreshToken)
@@ -109,22 +165,9 @@ namespace Demo.API.Controllers
             await _tokenStoreService.RevokeUserBearerTokensAsync(userIdValue, refreshToken);
             await _uow.SaveChangesAsync();
 
-            _antiforgery.DeleteAntiForgeryCookies();
+            //_antiforgery.DeleteAntiForgeryCookies();
 
             return true;
-        }
-
-        [HttpGet("[action]"), HttpPost("[action]")]
-        public bool IsAuthenticated()
-        {
-            return User.Identity.IsAuthenticated;
-        }
-
-        [HttpGet("[action]"), HttpPost("[action]")]
-        public IActionResult GetUserInfo()
-        {
-            var claimsIdentity = User.Identity as ClaimsIdentity;
-            return Json(new { Username = claimsIdentity.Name });
         }
     }
 }

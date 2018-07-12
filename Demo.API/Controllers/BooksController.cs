@@ -134,7 +134,6 @@ namespace Demo.API.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        [IgnoreAntiforgeryToken]
         [SwaggerResponse(400, type: null, description: "Bad Request")]
         [SwaggerResponse(500, type: null, description: "Internal Server Error")]
         [ProducesResponseType(typeof(ApiResponse<bool>), 200)]

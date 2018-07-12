@@ -25,3 +25,12 @@ C:\Users\sluna\OneDrive\Documents\.Net-Core-2.0-Demo-Application-With-Angular-5\
 C:\Users\sluna\OneDrive\Documents\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DomainModels\obj\Debug\netcoreapp2.0\Demo.DomainModels.AssemblyInfo.cs
 C:\Users\sluna\OneDrive\Documents\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DomainModels\obj\Debug\netcoreapp2.0\Demo.DomainModels.dll
 C:\Users\sluna\OneDrive\Documents\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DomainModels\obj\Debug\netcoreapp2.0\Demo.DomainModels.pdb
+C:\Users\sluna\OneDrive\Documents\Demo\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DomainModels\bin\Debug\netcoreapp2.0\Demo.DomainModels.deps.json
+C:\Users\sluna\OneDrive\Documents\Demo\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DomainModels\bin\Debug\netcoreapp2.0\Demo.DomainModels.dll
+C:\Users\sluna\OneDrive\Documents\Demo\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DomainModels\bin\Debug\netcoreapp2.0\Demo.DomainModels.pdb
+C:\Users\sluna\OneDrive\Documents\Demo\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DomainModels\obj\Debug\netcoreapp2.0\Demo.DomainModels.csprojAssemblyReference.cache
+C:\Users\sluna\OneDrive\Documents\Demo\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DomainModels\obj\Debug\netcoreapp2.0\Demo.DomainModels.csproj.CoreCompileInputs.cache
+C:\Users\sluna\OneDrive\Documents\Demo\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DomainModels\obj\Debug\netcoreapp2.0\Demo.DomainModels.AssemblyInfoInputs.cache
+C:\Users\sluna\OneDrive\Documents\Demo\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DomainModels\obj\Debug\netcoreapp2.0\Demo.DomainModels.AssemblyInfo.cs
+C:\Users\sluna\OneDrive\Documents\Demo\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DomainModels\obj\Debug\netcoreapp2.0\Demo.DomainModels.dll
+C:\Users\sluna\OneDrive\Documents\Demo\.Net-Core-2.0-Demo-Application-With-Angular-5\Demo.DomainModels\obj\Debug\netcoreapp2.0\Demo.DomainModels.pdb

@@ -4,6 +4,48 @@
         <name>Demo.API</name>
     </assembly>
     <members>
+        <member name="T:Demo.API.Controllers.AccountController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Demo.API.Controllers.AccountController.#ctor(Demo.BLL.IService.IUsersService,Demo.BLL.IService.ITokenStoreService,Demo.DAL.IUnitOfWork,Demo.BLL.IService.IAntiForgeryCookieService)">
+            <summary>
+            
+            </summary>
+            <param name="usersService"></param>
+            <param name="tokenStoreService"></param>
+            <param name="uow"></param>
+            <param name="antiforgery"></param>
+        </member>
+        <member name="M:Demo.API.Controllers.AccountController.Login(Demo.DomainModels.Models.LoginUser)">
+            <summary>
+            
+            </summary>
+            <param name="loginUser"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Demo.API.Controllers.AccountController.RefreshToken(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="refresh_token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Demo.API.Controllers.AccountController.AddUser(Demo.DomainModels.Models.AppUser)">
+            <summary>
+            
+            </summary>
+            <param name="appUser"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Demo.API.Controllers.AccountController.Logout(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="refreshToken"></param>
+            <returns></returns>
+        </member>
         <member name="T:Demo.API.Controllers.BooksController">
             <summary>
             Books Controller
@@ -100,6 +142,17 @@
             <response code="400">Bad Request.</response>
             <response code="500">Internal Server Error.</response> 
             <returns>It returns true in case of suceess.</returns>
+        </member>
+        <member name="T:Demo.API.Filters.CustomExceptionFilter">
+            <summary>
+            Custom Exception Filter
+            </summary>
+        </member>
+        <member name="M:Demo.API.Filters.CustomExceptionFilter.OnException(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
+            <summary>
+            On Exception
+            </summary>
+            <param name="context"></param>
         </member>
         <member name="T:Demo.API.IOCConfig">
             <summary>

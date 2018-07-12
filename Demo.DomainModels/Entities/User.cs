@@ -38,5 +38,7 @@ namespace Demo.DomainModels.Entities
         public virtual ICollection<UserRole> UserRoles { get; set; }
 
         public virtual ICollection<UserToken> UserTokens { get; set; }
+
+       
     }
 }

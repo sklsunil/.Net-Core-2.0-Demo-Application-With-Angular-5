@@ -23,11 +23,14 @@ namespace Demo.BLL.Service
         private readonly DbSet<UserToken> _tokens;
         private readonly IOptionsSnapshot<BearerTokensOptions> _configuration;
         private readonly IRolesService _rolesService;
+        private readonly IUsersService _usersService;
+
 
         public TokenStoreService(
             IUnitOfWork uow,
             ISecurityService securityService,
             IRolesService rolesService,
+            IUsersService usersService,
             IOptionsSnapshot<BearerTokensOptions> configuration)
         {
             _uow = uow;
@@ -40,6 +43,9 @@ namespace Demo.BLL.Service
             _rolesService.CheckArgumentIsNull(nameof(rolesService));
 
             _tokens = _uow.Set<UserToken>();
+
+            _usersService = usersService;
+            _rolesService.CheckArgumentIsNull(nameof(usersService));
 
             _configuration = configuration;
             _configuration.CheckArgumentIsNull(nameof(configuration));
@@ -152,6 +158,9 @@ namespace Demo.BLL.Service
 
         public async Task<(string accessToken, string refreshToken, IEnumerable<Claim> Claims)> CreateJwtTokens(User user, string refreshTokenSource)
         {
+            // Set last Login
+            await _usersService.UpdateUserLastActivityDateAsync(user.Id);
+
             var result = await createAccessTokenAsync(user);
             var refreshToken = Guid.NewGuid().ToString().Replace("-", "");
             await AddUserTokenAsync(user, refreshToken, result.AccessToken, refreshTokenSource);

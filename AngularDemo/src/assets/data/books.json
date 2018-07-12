@@ -1,0 +1,95 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Book Name",
+      "authors": "Author name update",
+      "numberOfPages": 10000,
+      "dateOfPublication": "2018-03-29T00:00:00"
+    },
+    {
+      "id": 2,
+      "name": "Book Name 1",
+      "authors": "Author 11",
+      "numberOfPages": 100,
+      "dateOfPublication": "2018-03-29T00:00:00"
+    },
+    {
+      "id": 3,
+      "name": "Book Name 2",
+      "authors": "Author 2",
+      "numberOfPages": 100,
+      "dateOfPublication": "2018-03-29T00:00:00"
+    },
+    {
+      "id": 4,
+      "name": "Book Name 3",
+      "authors": "Author 3",
+      "numberOfPages": 100,
+      "dateOfPublication": "2018-03-29T00:00:00"
+    },
+    {
+      "id": 5,
+      "name": "Book Name 4",
+      "authors": "Author 4",
+      "numberOfPages": 100,
+      "dateOfPublication": "2018-03-29T00:00:00"
+    },
+    {
+      "id": 6,
+      "name": "Book Name 5",
+      "authors": "Author 5",
+      "numberOfPages": 100,
+      "dateOfPublication": "2018-03-30T15:08:29.0633333"
+    },
+    {
+      "id": 7,
+      "name": "Book Name 6",
+      "authors": "Author 6",
+      "numberOfPages": 100,
+      "dateOfPublication": "2018-03-30T15:08:29.0633333"
+    },
+    {
+      "id": 8,
+      "name": "Book Name 7",
+      "authors": "Author 7",
+      "numberOfPages": 100,
+      "dateOfPublication": "2018-03-30T15:08:29.0633333"
+    },
+    {
+      "id": 9,
+      "name": "Book Name 9",
+      "authors": "Author 8",
+      "numberOfPages": 100,
+      "dateOfPublication": "2018-03-30T15:08:29.0633333"
+    },
+    {
+      "id": 10,
+      "name": "Book Name 10",
+      "authors": "Author 10",
+      "numberOfPages": 100,
+      "dateOfPublication": "2018-03-30T15:08:29.0633333"
+    },
+    {
+      "id": 11,
+      "name": "Book Name 11",
+      "authors": "Author 11",
+      "numberOfPages": 100,
+      "dateOfPublication": "2018-03-30T15:08:29.0633333"
+    },
+    {
+      "id": 12,
+      "name": "Book Name 12",
+      "authors": "Author 12",
+      "numberOfPages": 100,
+      "dateOfPublication": "2018-03-30T15:08:29.0633333"
+    },
+    {
+      "id": 13,
+      "name": "Book Name 13",
+      "authors": "Author 13",
+      "numberOfPages": 100,
+      "dateOfPublication": "2018-03-30T15:08:29.0633333"
+    }
+  ]
+}

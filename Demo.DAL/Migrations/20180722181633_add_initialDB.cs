@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Demo.DAL.Migrations
 {
-    public partial class AddInitial : Migration
+    public partial class add_initialDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,6 +44,7 @@ namespace Demo.DAL.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Username = table.Column<string>(maxLength: 450, nullable: false),
+                    Email = table.Column<string>(nullable: true),
                     Password = table.Column<string>(nullable: false),
                     DisplayName = table.Column<string>(nullable: true),
                     IsActive = table.Column<bool>(nullable: false),

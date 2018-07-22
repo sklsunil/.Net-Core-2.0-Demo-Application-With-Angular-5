@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Demo.DAL.Migrations
 {
     [DbContext(typeof(DemoDbContext))]
-    [Migration("20180711053141_Add_Email_User_Table")]
-    partial class Add_Email_User_Table
+    [Migration("20180722181633_add_initialDB")]
+    partial class add_initialDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

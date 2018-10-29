@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Demo.BLL.IService;
-using Swashbuckle.AspNetCore.SwaggerGen;
 using Demo.DomainModels.ApiResponse;
 using Demo.DomainModels.Models;
 using Microsoft.AspNetCore.Cors;
-using StackExchange.Redis;
 using Microsoft.AspNetCore.Authorization;
-using Demo.DomainModels.Role;
 
 namespace Demo.API.Controllers
 {
@@ -50,8 +45,8 @@ namespace Demo.API.Controllers
         /// <response code="200">It returns list of book.</response>
         /// <response code="400">Bad Request.</response>
         /// <response code="500">Internal Server Error.</response>
-        [SwaggerResponse(400, type: null, description: "Bad Request")]
-        [SwaggerResponse(500, type: null, description: "Internal Server Error")]
+        //[SwaggerResponse(400, type: null, description: "Bad Request")]
+        //[SwaggerResponse(500, type: null, description: "Internal Server Error")]
         [ProducesResponseType(typeof(ApiResponse<List<BookModel>>), 200)]
         [HttpGet]
         public async Task<ActionResult> Get()
@@ -71,8 +66,8 @@ namespace Demo.API.Controllers
         /// <response code="200">It returns book.</response>
         /// <response code="400">Bad Request.</response>
         /// <response code="500">Internal Server Error.</response>
-        [SwaggerResponse(400, type: null, description: "Bad Request")]
-        [SwaggerResponse(500, type: null, description: "Internal Server Error")]
+        //[SwaggerResponse(400, type: null, description: "Bad Request")]
+        //[SwaggerResponse(500, type: null, description: "Internal Server Error")]
         [ProducesResponseType(typeof(ApiResponse<List<BookModel>>), 200)]
         [HttpGet("{id}")]
         public async Task<ActionResult> Get(int id)
@@ -103,8 +98,8 @@ namespace Demo.API.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPut]
-        [SwaggerResponse(400, type: null, description: "Bad Request")]
-        [SwaggerResponse(500, type: null, description: "Internal Server Error")]
+        //[SwaggerResponse(400, type: null, description: "Bad Request")]
+        //[SwaggerResponse(500, type: null, description: "Internal Server Error")]
         [ProducesResponseType(typeof(ApiResponse<bool>), 200)]
         public async Task<ActionResult> Put([FromBody]BookModel model)
         {
@@ -134,8 +129,8 @@ namespace Demo.API.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        [SwaggerResponse(400, type: null, description: "Bad Request")]
-        [SwaggerResponse(500, type: null, description: "Internal Server Error")]
+        //[SwaggerResponse(400, type: null, description: "Bad Request")]
+        //[SwaggerResponse(500, type: null, description: "Internal Server Error")]
         [ProducesResponseType(typeof(ApiResponse<bool>), 200)]
         public async Task<ActionResult> Post([FromBody]BookModel model)
         {
@@ -157,8 +152,8 @@ namespace Demo.API.Controllers
         /// <response code="500">Internal Server Error.</response> 
         /// <returns>It returns true in case of suceess.</returns>
         [HttpDelete("id")]
-        [SwaggerResponse(400, type: null, description: "Bad Request")]
-        [SwaggerResponse(500, type: null, description: "Internal Server Error")]
+        //[SwaggerResponse(400, type: null, description: "Bad Request")]
+        //[SwaggerResponse(500, type: null, description: "Internal Server Error")]
         [ProducesResponseType(typeof(ApiResponse<bool>), 200)]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
